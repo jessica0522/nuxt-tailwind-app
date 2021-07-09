@@ -17,8 +17,11 @@
       </div>
       <div class="w-full text-center mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <NuxtLink to="/list">
-          <el-button class="w-2/3" type="primary">List Page</el-button>
+          <el-button class="w-2/3" type="primary">List page</el-button>
         </NuxtLink>
+        <div class="mt-8">
+          <el-button class="w-2/3" type="primary" @click="defaultDialog = true">Open dialog</el-button>
+        </div>
       </div>
     </div>
   </div>
