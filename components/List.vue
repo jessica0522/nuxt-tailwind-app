@@ -16,7 +16,7 @@
         
         <div v-if="lists.length>0">
           <ul>
-            <li v-for="(uni, index) in lists" :key="index">{{uni.name}}</li>
+            <list-item v-for="(uni, index) in lists" :key="index" :university="uni" />
           </ul>
         </div>
       </div>
@@ -25,8 +25,13 @@
 </template>
 
 <script>
+import ListItem from './ListItem.vue'
 
 export default {
+  components: {
+  'list-item' : ListItem
+  },
+
   computed: {
     lists() {
       return this.$store.getters['list/getLists']
