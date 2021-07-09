@@ -17,9 +17,16 @@
 
 <script>
 export default {
+  created() {
+    this.$axios.get('search?country=New+Zealand')
+    .then(res => {
+      console.log('res', res)
+    })
+  },
+
   data() {
     return {
-      // defaultDialog: true
+      defaultDialog: true
     }
   }
 }

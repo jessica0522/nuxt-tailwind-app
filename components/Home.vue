@@ -4,6 +4,7 @@
     <el-dialog
       title="This is a title"
       :visible.sync="defaultDialog"
+      :destroy-on-close="true"
       center>
       <span>Here's some content of this dialog.</span>
       <span slot="footer" class="dialog-footer">
