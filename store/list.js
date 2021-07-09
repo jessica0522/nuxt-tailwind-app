@@ -7,8 +7,8 @@ export const mutations = {
     state.list = lists
   },
 
-  toggleList (state, key) {
-    state.list[key].like = !state.list[key].like
+  changeListLike (state, {value, index}) {
+    state.list[index].like = value
   }
 }
 

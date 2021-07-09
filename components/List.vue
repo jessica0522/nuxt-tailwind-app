@@ -11,12 +11,12 @@
       </div>
       <div class="w-full text-center mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <NuxtLink to="/">
-          <el-button class="w-2/3" type="primary">Home page</el-button>
+          <el-button class="w-2/3 mb-8" type="primary">Home page</el-button>
         </NuxtLink>
         
         <div v-if="lists.length>0">
           <ul class="divide-y divide-blue-500">
-            <list-item v-for="(uni, index) in lists" :key="index" :university="uni" @toggleLike="changeLike(index)" />
+            <list-item v-for="(uni, index) in lists" :key="index" :index="index" :university="uni" @toggle-like="changeLike" />
           </ul>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default {
             ...uni,
             like: false
           }
-        }).slice(0, 9);
+        }).slice(0, 10);
 
         //save in store
         this.$store.commit('list/setLists', universities)
@@ -59,8 +59,12 @@ export default {
   },
 
   methods: {
-    changeLike(index) {
-      this.$store.commit('list/toggleList', index)
+    changeLike(params) {
+      const {value, index} = params
+      console.log(`$emit from list item index is ${index}, value is ${value}`)
+      
+      //update like status in store
+      this.$store.commit('list/changeListLike', {value, index})
     }
   }
 }
