@@ -11,10 +11,10 @@
       </div>
       <div class="w-full text-center mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <NuxtLink to="/">
-          <el-button class="w-2/3 mb-8" type="primary">Home page</el-button>
+          <el-button class="w-2/3" type="primary">Go to Home page</el-button>
         </NuxtLink>
         
-        <div v-if="lists.length>0">
+        <div v-if="lists.length>0" class="mt-8">
           <ul class="divide-y divide-blue-500">
             <list-item v-for="(uni, index) in lists" :key="index" :index="index" :university="uni" @toggle-like="changeLike" />
           </ul>
@@ -62,7 +62,7 @@ export default {
     changeLike(params) {
       const {value, index} = params
       console.log(`$emit from list item index is ${index}, value is ${value}`)
-      
+
       //update like status in store
       this.$store.commit('list/changeListLike', {value, index})
     }

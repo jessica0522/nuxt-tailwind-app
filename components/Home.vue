@@ -12,13 +12,13 @@
       </span>
     </el-dialog>
 
-    <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
+    <div class="w-2/3 mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-8 sm:pt-0">
         <p class="font-mono text-4xl">This is Home page</p>
       </div>
       <div class="w-full text-center mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <NuxtLink to="/list">
-          <el-button class="w-2/3" type="primary">List page</el-button>
+          <el-button class="w-2/3" type="primary">Go to List page</el-button>
         </NuxtLink>
         <div class="mt-8">
           <el-button class="w-2/3" type="primary" @click="defaultDialog = true">Open dialog</el-button>
