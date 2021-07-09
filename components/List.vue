@@ -1,7 +1,11 @@
 <template>
   <div class="relative flex items-top justify-center min-h-screen bg-blue-200 sm:items-center sm:pt-0">
 
-    <div class="w-1/2 mx-auto sm:px-6 lg:px-8">
+    <div 
+      v-loading.fullscreen="lists.length===0"
+      element-loading-text="Loading"
+      element-loading-spinner="el-icon-loading"
+      class="w-1/2 mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-8 sm:pt-0">
         <p class="font-mono text-4xl">This is List page</p>
       </div>
@@ -34,13 +38,13 @@ export default {
     if(this.lists.length === 0) {
       this.$axios.get('search?country=New+Zealand')
       .then(res => {
-        //add 'like' param to each university
+        // add 'like' param to each university
         const universities = res.map(uni => {
           return {
             ...uni,
             like: false
           }
-        });
+        }).slice(0, 9);
 
         //save in store
         this.$store.commit('list/setLists', universities)
