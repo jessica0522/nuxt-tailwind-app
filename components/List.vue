@@ -10,6 +10,11 @@
           <el-button class="w-2/3" type="primary">Home page</el-button>
         </NuxtLink>
         
+        <div v-if="lists.length>0">
+          <ul>
+            <li v-for="(uni, index) in lists" :key="index">{{uni.name}}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -20,13 +25,13 @@
 export default {
   computed: {
     lists() {
-      return this.$store.getters.getLists
+      return this.$store.getters['list/getLists']
     }
   },
 
   created() {
     //when not get university list from store, call API
-    if(!this.lists) {
+    if(this.lists.length === 0) {
       this.$axios.get('search?country=New+Zealand')
       .then(res => {
         //add 'like' param to each university
