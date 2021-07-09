@@ -6,9 +6,9 @@ export const mutations = {
   setLists (state, lists) {
     state.list = lists
   },
-  
-  toggleList (state, uni) {
-    uni.like = !uni.like
+
+  toggleList (state, key) {
+    state.list[key].like = !state.list[key].like
   }
 }
 

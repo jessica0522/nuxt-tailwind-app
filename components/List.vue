@@ -5,7 +5,7 @@
       v-loading.fullscreen="lists.length===0"
       element-loading-text="Loading"
       element-loading-spinner="el-icon-loading"
-      class="w-1/2 mx-auto sm:px-6 lg:px-8">
+      class="w-2/3 mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-8 sm:pt-0">
         <p class="font-mono text-4xl">This is List page</p>
       </div>
@@ -15,8 +15,8 @@
         </NuxtLink>
         
         <div v-if="lists.length>0">
-          <ul>
-            <list-item v-for="(uni, index) in lists" :key="index" :university="uni" />
+          <ul class="divide-y divide-blue-500">
+            <list-item v-for="(uni, index) in lists" :key="index" :university="uni" @toggleLike="changeLike(index)" />
           </ul>
         </div>
       </div>
@@ -58,6 +58,11 @@ export default {
     
   },
 
+  methods: {
+    changeLike(index) {
+      this.$store.commit('list/toggleList', index)
+    }
+  }
 }
 </script>
 
