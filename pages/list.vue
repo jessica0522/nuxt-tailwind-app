@@ -1,5 +1,3 @@
 <template>
-  <div>
-    list
-  </div>
+  <List />
 </template>
