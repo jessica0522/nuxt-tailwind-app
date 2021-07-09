@@ -16,19 +16,34 @@
 </template>
 
 <script>
+
 export default {
-  created() {
-    this.$axios.get('search?country=New+Zealand')
-    .then(res => {
-      console.log('res', res)
-    })
+  computed: {
+    lists() {
+      return this.$store.getters.getLists
+    }
   },
 
-  data() {
-    return {
-      defaultDialog: true
+  created() {
+    //when not get university list from store, call API
+    if(!this.lists) {
+      this.$axios.get('search?country=New+Zealand')
+      .then(res => {
+        //add 'like' param to each university
+        const universities = res.map(uni => {
+          return {
+            ...uni,
+            like: false
+          }
+        });
+
+        //save in store
+        this.$store.commit('list/setLists', universities)
+      })
     }
-  }
+    
+  },
+
 }
 </script>
 
