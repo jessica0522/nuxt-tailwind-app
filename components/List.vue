@@ -13,10 +13,10 @@
         <NuxtLink to="/">
           <el-button class="w-2/3" type="primary">Go to Home page</el-button>
         </NuxtLink>
-        
-        <div v-if="lists.length>0" class="mt-8">
+        <p class="font-mono text-2xl my-4">Player lists</p>
+        <div v-if="lists.length>0" class="mt-4">
           <ul class="divide-y divide-blue-500">
-            <list-item v-for="(uni, index) in lists" :key="index" :index="index" :university="uni" @toggle-like="changeLike" />
+            <list-item v-for="(item, index) in lists" :key="index" :index="index" :item="item" @toggle-like="changeLike" />
           </ul>
         </div>
       </div>
@@ -47,18 +47,18 @@ export default {
 
   methods: {
     async queryList() {
-      await this.$axios.get('search?country=New+Zealand')
+      await this.$axios.get('https://www.balldontlie.io/api/v1/players')
       .then(res => {
-        // add 'like' param to each university
-        const universities = res.map(uni => {
+        // add 'like' param to each player
+        const items = res.data.map(item => {
           return {
-            ...uni,
+            ...item,
             like: false
           }
         }).slice(0, 10);
 
         //save in store
-        this.$store.commit('list/setLists', universities)
+        this.$store.commit('list/setLists', items)
       })
     },
 

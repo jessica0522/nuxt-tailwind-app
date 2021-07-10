@@ -13,8 +13,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
-      { 'http-equiv': 'Content-Security-Policy', content: 'upgrade-insecure-requests' }
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -42,12 +41,6 @@ export default {
   modules: [
     '@nuxtjs/axios'
   ],
-
-  publicRuntimeConfig: {
-    axios: {
-      baseURL: 'http://universities.hipolabs.com/'
-    }
-  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

@@ -1,11 +1,11 @@
 <template>
   <li class="text-left py-4 flex items-center">
     <p class="uniName">
-      {{university.name}}
+      {{`${item.first_name}  ${item.last_name}`}}
     </p>
-    <i v-if="university.like" class="el-icon-circle-check text-blue-500 mx-8"></i>
+    <i v-if="item.like" class="el-icon-circle-check text-blue-500 mx-8"></i>
     <i v-else class="el-icon-circle-close text-red-500 mx-8"></i>
-    <el-button class="likeBtn" type="primary" size="small" @click="changeLikeStatus(!university.like, index)">{{showLike(university.like)}}</el-button>
+    <el-button class="likeBtn" type="primary" size="small" @click="changeLikeStatus(!item.like, index)">{{showLike(item.like)}}</el-button>
   </li>
 </template>
 
@@ -13,12 +13,12 @@
 export default {
   name: 'ListItem',
   props: {
-    university: Object,
+    item: Object,
     index: Number
   },
   methods: {
     showLike(like) {
-      //display 'Unlike' for already been liked university
+      //display 'Unlike' for already been liked item
       return like? 'Unlike' : 'Like'
     },
 
