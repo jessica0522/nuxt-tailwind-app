@@ -7,7 +7,7 @@
       element-loading-spinner="el-icon-loading"
       class="w-2/3 mx-auto sm:px-6 lg:px-8">
       <div class="flex justify-center pt-8 sm:pt-0">
-        <p class="font-mono text-4xl">This is List page</p>
+        <p data-test="title" class="font-mono text-4xl">This is List page</p>
       </div>
       <div class="w-full text-center mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <NuxtLink to="/">
@@ -41,7 +41,13 @@ export default {
   created() {
     //when not get university list from store, call API
     if(this.lists.length === 0) {
-      this.$axios.get('search?country=New+Zealand')
+      this.queryList()
+    }
+  },
+
+  methods: {
+    async queryList() {
+      await this.$axios.get('search?country=New+Zealand')
       .then(res => {
         // add 'like' param to each university
         const universities = res.map(uni => {
@@ -54,11 +60,8 @@ export default {
         //save in store
         this.$store.commit('list/setLists', universities)
       })
-    }
-    
-  },
+    },
 
-  methods: {
     changeLike(params) {
       const {value, index} = params
       console.log(`$emit from list item index is ${index}, value is ${value}`)
