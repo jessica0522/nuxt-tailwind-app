@@ -5,31 +5,22 @@ import Element from 'element-ui'
 const localVue = createLocalVue()
 localVue.use(Element);
 
-const uniData = {
-  "domains":[
-    "auckland.ac.nz",
-    "aucklanduni.ac.nz"
-  ],
-  "like": false,
-  "web_pages":[
-    "http://www.auckland.ac.nz/"
-  ],
-  "name":"University of Example",
-  "alpha_two_code":"NZ",
-  "state-province":null,
-  "country":"New Zealand"
+const playerData = {
+  "first_name": "Ike",
+  "last_name": "Anigbogu",
+  "like": false
 }
 
 describe('List Item component', () => {
   const wrapper = shallowMount(ListItem, {
     localVue,
     propsData: {
-      university: uniData,
+      item: playerData,
       index: 0
     }
   })
-  it('name should be University of Example', () => {
-    expect(wrapper.find('.uniName').text()).toBe('University of Example')
+  it('name should be Ike', () => {
+    expect(wrapper.find('.uniName').text()).toBe('Ike  Anigbogu')
   })
 
   it('text on like button shoule be "Like"', () => {

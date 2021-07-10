@@ -18,18 +18,9 @@ describe('List compnent', () => {
     const getters = {
       'list/getLists': () => [
         {
-            "domains":[
-              "auckland.ac.nz",
-              "aucklanduni.ac.nz"
-            ],
-            "like": false,
-            "web_pages":[
-              "http://www.auckland.ac.nz/"
-            ],
-            "name":"University of Example",
-            "alpha_two_code":"NZ",
-            "state-province":null,
-            "country":"New Zealand"
+          "first_name": "Ike",
+          "last_name": "Anigbogu",
+          "like": false
         }
       ]
     }
